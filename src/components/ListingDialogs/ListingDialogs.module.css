@@ -1,0 +1,26 @@
+.reviewList { display: grid; gap: 24px; }
+
+.dialogCopy { display: grid; gap: 12px; }
+.dialogCopy p, .dialogCopy label { margin: 0; }
+.dialogCopy textarea {
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px;
+  resize: vertical;
+}
+
+.primary {
+  height: 48px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.primary:hover { background: var(--brand-dark); }
+.primary:disabled { opacity: 0.5; }
+
+.error { color: #c13515; }

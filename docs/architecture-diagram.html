@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Vacation rental architecture</title>
+  <style>
+    body { margin: 0; background: #f7f7f7; font-family: Inter, Segoe UI, sans-serif; color: #222; }
+    main { width: 1400px; margin: 0 auto; padding: 36px 28px 48px; }
+    h1 { margin: 0 0 6px; font-size: 28px; }
+    p.lead { margin: 0 0 28px; color: #555; }
+    .col { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .box { background: #fff; border: 1px solid #ddd; border-radius: 14px; padding: 14px 18px; min-width: 220px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,.05); }
+    .box strong { display: block; font-size: 16px; }
+    .box span { color: #666; font-size: 13px; }
+    .arrow { color: #ff385c; font-size: 22px; line-height: 1; }
+    .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 760px; }
+    .services .box { min-width: 0; }
+    .group { background: #fff; border: 1px dashed #ccc; border-radius: 18px; padding: 16px; }
+    .group h2 { margin: 0 0 12px; font-size: 14px; letter-spacing: .04em; text-transform: uppercase; color: #666; text-align: center; }
+    .infra { display: grid; grid-template-columns: repeat(3, 220px); gap: 10px; justify-content: center; }
+    .note { margin-top: 22px; font-size: 13px; color: #666; text-align: center; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Vacation-rental marketplace</h1>
+    <p class="lead">Production path from the guest to data stores, with horizontal scaling behind the gateway.</p>
+    <div class="col">
+      <div class="box"><strong>User</strong><span>Guest or host browser</span></div>
+      <div class="arrow">↓</div>
+      <div class="box"><strong>CDN / Edge</strong><span>Static assets, images, cached pages</span></div>
+      <div class="arrow">↓</div>
+      <div class="box"><strong>Frontend</strong><span>React listing, photo tour, lightbox</span></div>
+      <div class="arrow">↓</div>
+      <div class="box"><strong>API gateway / load balancer</strong><span>TLS, auth, horizontal scaling</span></div>
+      <div class="arrow">↓</div>
+      <div class="group">
+        <h2>Backend services</h2>
+        <div class="services">
+          <div class="box"><strong>Auth</strong><span>Sessions and identity</span></div>
+          <div class="box"><strong>Listing</strong><span>Homes, photos, amenities</span></div>
+          <div class="box"><strong>Booking</strong><span>Dates, price, holds</span></div>
+          <div class="box"><strong>User</strong><span>Profiles and wishlists</span></div>
+          <div class="box"><strong>Payment</strong><span>Authorize and capture</span></div>
+          <div class="box"><strong>Notification</strong><span>Email and alerts</span></div>
+        </div>
+      </div>
+      <div class="arrow">↓</div>
+      <div class="infra">
+        <div class="box"><strong>PostgreSQL</strong><span>Primary database</span></div>
+        <div class="box"><strong>Redis</strong><span>Cache and locks</span></div>
+        <div class="box"><strong>Object storage</strong><span>Listing images</span></div>
+        <div class="box"><strong>Search engine</strong><span>Destination search</span></div>
+        <div class="box"><strong>Message queue</strong><span>Async booking events</span></div>
+        <div class="box"><strong>Monitoring / logging</strong><span>Metrics, traces, errors</span></div>
+      </div>
+      <p class="note">Services scale out behind the load balancer. The CDN shields origin from image and asset traffic.</p>
+    </div>
+  </main>
+</body>
+</html>

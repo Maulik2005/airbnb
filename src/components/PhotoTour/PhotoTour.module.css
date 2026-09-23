@@ -1,0 +1,225 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 280ms cubic-bezier(0.2, 0, 0, 1);
+  will-change: opacity;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.top {
+  height: 72px;
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: 48px 1fr 96px;
+  align-items: center;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--border-soft);
+  background: #fff;
+  z-index: 3;
+}
+
+.top h2 {
+  margin: 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.icon:hover {
+  background: var(--bg-muted);
+}
+
+.icon:active {
+  transform: scale(0.94);
+}
+
+.saved {
+  color: var(--brand);
+}
+
+.body {
+  flex: 1;
+  overflow: auto;
+  padding: 24px 0 80px;
+  scroll-behavior: smooth;
+}
+
+.categories {
+  max-width: 1120px;
+  margin: 0 auto 40px;
+  padding: 0 40px;
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+}
+
+.category {
+  width: 88px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 12px;
+  flex: 0 0 auto;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 320ms cubic-bezier(0.2, 0, 0, 1),
+    transform 320ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.visible .category {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.category img {
+  width: 88px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  transition: outline-color 0.15s ease, transform 0.2s ease;
+}
+
+.category:hover img {
+  outline: 2px solid var(--text-primary);
+  transform: scale(1.03);
+}
+
+/* Sticky left labels + masonry right grid — the Airbnb photo-tour scroll behavior */
+.section {
+  max-width: 1120px;
+  margin: 0 auto 56px;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: minmax(200px, 280px) minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 360ms cubic-bezier(0.2, 0, 0, 1),
+    transform 360ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.visible .section {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.copy {
+  position: sticky;
+  top: 24px;
+  align-self: start;
+  padding-top: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.copy h3 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  line-height: 1.15;
+  font-weight: 600;
+  color: #222222;
+}
+
+.copy p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #6a6a6a;
+}
+
+.masonry {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.rowFull,
+.rowPair {
+  display: grid;
+  gap: 8px;
+}
+
+.rowFull {
+  grid-template-columns: 1fr;
+}
+
+.rowPair {
+  grid-template-columns: 1fr 1fr;
+}
+
+.photo {
+  border: 0;
+  padding: 0;
+  background: #f3f3f3;
+  border-radius: 12px;
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  transition: transform 0.2s ease;
+}
+
+.photoWide {
+  aspect-ratio: 16 / 10;
+}
+
+.photoHalf {
+  aspect-ratio: 4 / 3;
+}
+
+.photo:hover {
+  transform: translateY(-1px);
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.photo:hover img {
+  transform: scale(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .category,
+  .section,
+  .photo,
+  .photo img,
+  .icon,
+  .body {
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto;
+  }
+}

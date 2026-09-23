@@ -1,0 +1,96 @@
+.page { min-height: 100vh; }
+
+.main {
+  width: min(var(--page-max-width), calc(100% - 48px));
+  margin: 0 auto 48px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 26px 0 24px;
+}
+
+.titleRow h1 {
+  margin: 0;
+  font-size: 26px;
+  line-height: 32px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+.titleActions { display: flex; gap: 4px; padding-top: 2px; }
+
+.titleActions button {
+  border: 0;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 8px;
+  border-radius: 8px;
+  color: #222222;
+}
+
+.titleActions button:hover { background: var(--bg-muted); }
+.saved { color: var(--brand); }
+
+.columns {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 372px;
+  gap: 88px;
+  align-items: start;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.rail {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+}
+
+.below {
+  width: 100%;
+  padding-top: 0;
+}
+
+.footer {
+  border-top: 1px solid var(--border-soft);
+  padding: 24px 0 40px;
+}
+
+.footer > div {
+  width: min(var(--page-max-width), calc(100% - 48px));
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.footer p { margin: 0; }
+.footer nav { display: flex; gap: 16px; }
+.footer a { color: inherit; }
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  border-radius: 8px;
+  padding: 12px 16px;
+  z-index: 80;
+  animation: fade 0.2s ease;
+}
+
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }

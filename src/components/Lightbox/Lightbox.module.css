@@ -1,0 +1,128 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 240ms cubic-bezier(0.2, 0, 0, 1);
+  will-change: opacity;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.top {
+  height: 72px;
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.top h2 {
+  margin: 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.icon:hover {
+  background: var(--bg-muted);
+}
+
+.icon:active {
+  transform: scale(0.94);
+}
+
+.stage {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 72px 1fr 72px;
+  align-items: center;
+  padding: 0 12px 32px;
+}
+
+.frame {
+  justify-self: center;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.image {
+  max-width: min(1040px, 100%);
+  max-height: calc(100vh - 150px);
+  object-fit: contain;
+  animation: imageIn 280ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+@keyframes imageIn {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.nav {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
+  box-shadow: var(--shadow-float);
+  display: grid;
+  place-items: center;
+  justify-self: center;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.nav:hover:not(:disabled) {
+  transform: scale(1.06);
+}
+
+.nav:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.nav:disabled {
+  opacity: 0.35;
+  cursor: default;
+  box-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .nav,
+  .icon {
+    transition-duration: 0.01ms !important;
+  }
+
+  .image {
+    animation-duration: 0.01ms !important;
+  }
+}

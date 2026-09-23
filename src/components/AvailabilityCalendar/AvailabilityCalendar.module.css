@@ -1,0 +1,70 @@
+.section { position: relative; padding: 32px 0 0; border-top: 1px solid var(--border-soft); }
+.section h2 { margin: 0; font-size: 22px; }
+.section > p { margin: 4px 0 24px; color: var(--text-secondary); }
+
+.nav { position: absolute; top: 88px; left: 0; right: 0; display: flex; justify-content: space-between; pointer-events: none; }
+.nav button {
+  pointer-events: auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: #fff;
+  display: grid;
+  place-items: center;
+}
+.nav button:hover { background: var(--bg-muted); }
+
+.months { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.months h3 { text-align: center; font-size: 16px; margin: 0 0 16px; }
+
+.week, .grid { display: grid; grid-template-columns: repeat(7, 1fr); }
+.week span { text-align: center; font-size: 12px; color: var(--text-secondary); font-weight: 600; padding-bottom: 8px; }
+
+.day {
+  position: relative;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  font-size: 14px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.day:hover { border: 1px solid var(--text-primary); }
+
+.inRange { background: var(--bg-range); border-radius: 0; }
+.rangeStart { border-radius: 50% 0 0 50%; background: var(--bg-range); }
+.rangeEnd { border-radius: 0 50% 50% 0; background: var(--bg-range); }
+.endpoint {
+  background: var(--text-primary);
+  color: #fff;
+  border-radius: 50%;
+}
+.endpoint:hover { border-color: transparent; }
+
+.footer { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+.keyButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: #fff;
+  display: grid;
+  place-items: center;
+}
+.clear {
+  border: 0;
+  background: transparent;
+  text-decoration: underline;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px;
+  border-radius: 8px;
+}
+.clear:hover { background: var(--bg-muted); }
+.clear:disabled { opacity: 0.4; }
+
+.keyboard { display: flex; gap: 12px; margin: 12px 0; }
+.keyboard label { display: grid; gap: 4px; font-size: 12px; font-weight: 700; }
+.keyboard input { border: 1px solid var(--border-color); border-radius: 8px; padding: 8px; font-weight: 400; }

@@ -1,0 +1,14 @@
+---
+description: Desktop listing page conventions for this assignment
+alwaysApply: true
+---
+
+# Listing page
+
+This is an original desktop listing UI. Do not copy another site's source.
+
+- Keep listing content at 1120px. Gallery is 480px tall with an 8px gap.
+- Primary text is `#222222`. The reserve and search actions use `#ff385c`.
+- Photos, the photo tour, and the lightbox all read the `photos` array from `GET /api/listing`.
+- Escape closes only the top overlay. Restore focus to the trigger.
+- Do not add a mobile layout unless asked.
