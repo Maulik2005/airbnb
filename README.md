@@ -78,9 +78,22 @@ npm start
 
 `npm start` serves the API and the production build from `dist/`.
 
-## Deployment
+## Deployment (Vercel)
 
-Build the client, then run the Node server with `PORT` set. Put the static build behind a CDN and run more than one API instance behind a load balancer for a production rollout. See `docs/architecture.md`.
+Vercel hosts the Vite frontend and the `/api` serverless routes (`api/listing.js`, etc.). Local `npm run dev` still uses the Express server in `server/`.
+
+1. Push this repo to GitHub.
+2. Import the project in Vercel (Framework: Vite, Output: `dist`).
+3. Deploy. Open `https://your-app.vercel.app` — listing data comes from `/api/listing`.
+
+## Deployment (Render / any Node host)
+
+```bash
+npm run build
+npm start
+```
+
+`npm start` serves the API and the production build from `dist/` on one Node process.
 
 ## Architecture
 

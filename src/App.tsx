@@ -17,7 +17,7 @@ export default function App() {
       .catch((error: unknown) => {
         if (controller.signal.aborted) return;
         if (error instanceof DOMException && error.name === "AbortError") return;
-        setError("The listing could not be loaded. Start the API with npm run dev.");
+        setError("The listing could not be loaded. The API is unavailable.");
       });
     return () => controller.abort();
   }, []);
